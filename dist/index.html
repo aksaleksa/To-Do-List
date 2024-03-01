@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To-Do List</title>
+</head>
+
+<body>
+    <div id="sidebar">
+        <h1>To-Do List</h1>
+        <button id="urgent">Urgent</button>
+        <button id="completed">Completed</button>
+        <button id="view-projects">View Projects</button>
+        <button id="add-project">Add Project</button>
+    </div>
+    <div>
+        <dialog id="project-popup">
+            <form action="" id="project-form">
+                <div>
+                    <button id="project-close">Close</button>
+                </div>
+                <div>
+                    <label for="project-name">Project Name</label>
+                    <input type="text" id="project-name" name="project-name" required>
+                </div>
+                <div>
+                    <button type="submit" id="project-create">Create Project</button>
+                </div>
+            </form>
+        </dialog>
+        <dialog id="task-popup">
+            <form action="" id="task-form">
+                <div>
+                    <button id="task-close">Close</button>
+                </div>
+                <div>
+                    <label for="task-name">Task Name</label>
+                    <input type="text" id="task-name" name="task-name" required>
+                </div>
+                <div>
+                    <label for="task-description">Description</label>
+                    <textarea id="task-description" name="task-description" cols="30" rows="10" required></textarea>
+                </div>
+                <div>
+                    <label for="task-due">Due</label>
+                    <input type="date" id="task-due" name="task-due" required>
+                </div>
+                <div>
+                    <label for="task-urgent">Urgent?</label>
+                    <input type="checkbox" id="task-urgent" name="task-urgent">
+                </div>
+                <div>
+                    <button type="submit" id="task-create">Add Task</button>
+                </div>
+            </form>
+        </dialog>
+    </div>
+    <div id="main"></div>
+    <script src="bundle.js"></script>
+</body>
+
+</html>
