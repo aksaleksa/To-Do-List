@@ -55,15 +55,15 @@ body {
     background-color: #bbdeff;
     color: white;
     font-size: 20px;
-    width: 70%;
-    height: 80%;
+    width: 600px;
+    height: 550px;
     padding: 10px;
     margin: 20px auto;
     display: grid;
     grid-template: 40% 40% / 40% 40% ;
     justify-content: center;
     gap: 20px;
-    overflow: scroll;
+    overflow-y: scroll;
 }
 
 .project-board > div {
@@ -93,8 +93,8 @@ body {
 
 .task-board {
     background-color: #7ef6a2;
-    width: 70%;
-    height: 80%;
+    width: 600px;
+    height: 550px;
     padding: 10px;
     margin: 20px auto;
     display: flex;
@@ -102,13 +102,35 @@ body {
     justify-content: flex-start;
     align-items: center;
     gap: 20px;
-    overflow: scroll;
+    overflow-y: scroll;
 }
 
 .task-board > div {
     width: 80%;
     height: 20%;
     background-color: #feffdf;
+    padding: 10px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: start;
+}
+
+.completed-label {
+    display: inline;
+}
+
+.task-board > div:hover {
+    background-color: #eff0d4;
+}
+
+.task-name {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.task-board button {
+    margin: 20px 10px 0 0;
 }
 
 #task-buttons {
@@ -134,13 +156,16 @@ body {
 
 #task-buttons > button:hover {
     cursor: pointer;
+    transform: scale(1.1);
+    transition: all 0.3s ease;
 }
 
-important .completed-task {
-    background-color: rgb(113, 255, 125);
+.completed-task {
+    color: #feffdf;
+    background-color: rgb(25, 188, 30) !important;
 }
 
-important .urgent-task {
-    background-color: rgb(255, 85, 85);
-    font-weight: bold;
+.urgent-task {
+    color: #feffdf;
+    background-color: rgb(255, 69, 69) !important
 }

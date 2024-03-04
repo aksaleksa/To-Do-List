@@ -56,6 +56,32 @@
                 </div>
             </form>
         </dialog>
+        <dialog id="edit-popup">
+            <form action="" id="edit-form">
+                <div>
+                    <button id="edit-close">Close</button>
+                </div>
+                <div>
+                    <label for="edit-name">Task Name</label>
+                    <input type="text" id="edit-name" name="edit-name" required>
+                </div>
+                <div>
+                    <label for="edit-description">Description</label>
+                    <textarea id="edit-description" name="edit-description" cols="30" rows="10" required></textarea>
+                </div>
+                <div>
+                    <label for="edit-due">Due</label>
+                    <input type="date" id="edit-due" name="edit-due" required>
+                </div>
+                <div>
+                    <label for="edit-urgent">Urgent?</label>
+                    <input type="checkbox" id="edit-urgent" name="edit-urgent">
+                </div>
+                <div>
+                    <button type="submit" id="edit-create">Update</button>
+                </div>
+            </form>
+        </dialog>
     </div>
     <div id="main"></div>
     <script src="bundle.js"></script>

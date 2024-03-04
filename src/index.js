@@ -27,10 +27,11 @@ const taskCreate = document.querySelector("#task-create");
 
 let projects = [];
 let projectIndex;
+let taskIndex;
 
 const exampleProject = new Project("Example Project");
-exampleProject.addTask("Add features", "Make the app more functional", "Tomorrow", true);
-exampleProject.addTask("Write tests", "Make sure the app doesn't break", "Today");
+exampleProject.addTask("Add features", "Make the app more functional", "2024-03-04", true);
+exampleProject.addTask("Write tests", "Make sure the app doesn't break", "2024-03-03");
 projects.push(exampleProject);
 
 
@@ -92,4 +93,4 @@ taskCreate.addEventListener("click", (e) => {
 
 viewProjects(projects);
 
-export {projects, projectIndex}
+export {projects, projectIndex, taskIndex}

@@ -10,12 +10,15 @@ function viewCompleted(projects) {
         for (let task of project.tasks) {
             if (task.finished) {
                 const item = document.createElement("div");
+                const leftContainer = document.createElement("div");
+                const rightContainer = document.createElement("div");
                 const name = document.createElement("p");
                 const description = document.createElement("p");
                 const deleteButton = document.createElement("button");
 
-                item.classList.add("completed-task");
+                // item.classList.add("completed-task");
                 name.textContent = task.name;
+                name.classList.add("task-name");
                 description.textContent = task.description;
                 deleteButton.textContent = "X";
 
@@ -25,9 +28,11 @@ function viewCompleted(projects) {
                     board.removeChild(item)
                 })
 
-                item.appendChild(name);
-                item.appendChild(description);
-                item.appendChild(deleteButton);
+                leftContainer.appendChild(name);
+                leftContainer.appendChild(description);
+                rightContainer.appendChild(deleteButton);
+                item.appendChild(leftContainer);
+                item.appendChild(rightContainer);
                 board.appendChild(item);
             }
         }
