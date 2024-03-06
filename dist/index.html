@@ -17,31 +17,26 @@
     </div>
     <div>
         <dialog id="project-popup">
-            <form action="" id="project-form">
-                <div>
-                    <button id="project-close">Close</button>
-                </div>
+            <form id="project-form">
                 <div>
                     <label for="project-name">Project Name</label>
-                    <input type="text" id="project-name" name="project-name" required>
+                    <input type="text" id="project-name" name="project-name">
                 </div>
                 <div>
                     <button type="submit" id="project-create">Create Project</button>
+                    <button id="project-close">Close</button>
                 </div>
             </form>
         </dialog>
         <dialog id="task-popup">
-            <form action="" id="task-form">
-                <div>
-                    <button id="task-close">Close</button>
-                </div>
+            <form id="task-form">
                 <div>
                     <label for="task-name">Task Name</label>
                     <input type="text" id="task-name" name="task-name" required>
                 </div>
                 <div>
                     <label for="task-description">Description</label>
-                    <textarea id="task-description" name="task-description" cols="30" rows="10" required></textarea>
+                    <textarea id="task-description" name="task-description" cols="25" rows="7" required></textarea>
                 </div>
                 <div>
                     <label for="task-due">Due</label>
@@ -53,21 +48,19 @@
                 </div>
                 <div>
                     <button type="submit" id="task-create">Add Task</button>
+                    <button id="task-close">Close</button>
                 </div>
             </form>
         </dialog>
         <dialog id="edit-popup">
-            <form action="" id="edit-form">
-                <div>
-                    <button id="edit-close">Close</button>
-                </div>
+            <form id="edit-form">
                 <div>
                     <label for="edit-name">Task Name</label>
                     <input type="text" id="edit-name" name="edit-name" required>
                 </div>
                 <div>
                     <label for="edit-description">Description</label>
-                    <textarea id="edit-description" name="edit-description" cols="30" rows="10" required></textarea>
+                    <textarea id="edit-description" name="edit-description" cols="25" rows="7" required></textarea>
                 </div>
                 <div>
                     <label for="edit-due">Due</label>
@@ -79,6 +72,7 @@
                 </div>
                 <div>
                     <button type="submit" id="edit-create">Update</button>
+                    <button id="edit-close">Close</button>
                 </div>
             </form>
         </dialog>

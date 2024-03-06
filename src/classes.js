@@ -1,5 +1,5 @@
 class Task {
-    constructor(name, description, dueDate, urgent = false) {
+    constructor(name, description, dueDate, urgent) {
         this.name = name;
         this.description = description;
         this.dueDate = dueDate;

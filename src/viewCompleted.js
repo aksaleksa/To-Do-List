@@ -1,3 +1,5 @@
+import { viewTasks } from "./viewTasks";
+
 function viewCompleted(projects) {
     const main = document.querySelector("#main");
     const heading = document.createElement("h2");
@@ -21,11 +23,20 @@ function viewCompleted(projects) {
                 name.classList.add("task-name");
                 description.textContent = task.description;
                 deleteButton.textContent = "X";
+                deleteButton.classList.add("delete-task");
 
-                deleteButton.addEventListener("click", () => {
-                    let index = project.tasks.indexOf(task);
-                    project.tasks.splice(index, 1);
-                    board.removeChild(item)
+                item.addEventListener("click", (e) => {
+                    if (e.target.classList.contains("delete-task")) {
+                        if (confirm("Are you sure you want to delete this task?")) {
+                            let index = project.tasks.indexOf(task);
+                            project.tasks.splice(index, 1);
+                            board.removeChild(item)
+                        }
+                    }
+                    else {
+                        main.innerHTML = "";
+                        viewTasks(project);
+                    }
                 })
 
                 leftContainer.appendChild(name);

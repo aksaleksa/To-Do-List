@@ -14,7 +14,7 @@ body {
     grid-area: 1 / 1 / 2 / 2;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: space-around;
     align-items: center;
     background-color: #97cba9;
     padding: 10px;
@@ -51,6 +51,98 @@ body {
     text-align: center;
 }
 
+#project-popup {
+    width: 30%;
+    height: 20%;
+    background-color: #feffdf;
+    border: 1px solid black;
+}
+
+#project-form {
+    margin: auto;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    gap: 20px;
+    align-items: center;
+}
+
+#project-form > div {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+#project-form button {
+    border: none;
+    padding: 10px;
+    margin-right: 10px;
+    color: #feffdf;
+    background-color: #595e5b;
+}
+
+#project-form button:hover {
+    cursor: pointer;
+    background-color: #323332;
+}
+
+#project-form input {
+    width: 50%;
+    margin-right: 20px;
+}
+
+#task-popup, #edit-popup {
+    height: 50%;
+    width: 50%;
+    background-color: #feffdf;
+    border: 1px solid black;
+}
+
+#task-form, #edit-form {
+    margin: auto;
+    width: 50%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: flex-start;
+}
+
+#task-form > div, #edit-form > div {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+#task-form button, #edit-form button {
+    border: none;
+    padding: 10px;
+    margin-right: 10px;
+    color: #feffdf;
+    background-color: #595e5b;
+}
+
+#task-form button:hover, #edit-form  button:hover {
+    cursor: pointer;
+    background-color: #323332;
+}
+
+#task-form input[type="text"] input[type="date"] {
+    width: 50%;
+    /* margin-right: 20px; */
+}
+
+#edit-form input[type="text"] input[type="date"] {
+    width: 50%;
+    /* margin-right: 20px; */
+}
+
 .project-board {
     background-color: #bbdeff;
     color: white;
@@ -82,7 +174,7 @@ body {
     transition: all 0.3s ease;
 }
 
-.delete-button {
+.delete-project {
     border: none;
     background-color: white;
     color: black;
@@ -116,6 +208,10 @@ body {
     align-items: start;
 }
 
+.task-board > div:hover {
+    cursor: pointer;
+}
+
 .completed-label {
     display: inline;
 }
@@ -131,6 +227,11 @@ body {
 
 .task-board button {
     margin: 20px 10px 0 0;
+    padding: 7px;
+    border-radius: 5px;
+    border:none;
+    background-color: #4d85da;
+    color: #feffdf;
 }
 
 #task-buttons {
@@ -162,7 +263,7 @@ body {
 
 .completed-task {
     color: #feffdf;
-    background-color: rgb(25, 188, 30) !important;
+    background-color: rgb(13, 188, 19) !important;
 }
 
 .urgent-task {

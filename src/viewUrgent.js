@@ -1,3 +1,5 @@
+import { viewTasks } from "./viewTasks";
+
 function viewUrgent(projects) {
     const main = document.querySelector("#main");
     const heading = document.createElement("h2");
@@ -10,18 +12,34 @@ function viewUrgent(projects) {
         for (let task of project.tasks) {
             if (task.urgent) {
                 const item = document.createElement("div");
+                const leftContainer = document.createElement("div");
+                const rightContainer = document.createElement("div");
                 const name = document.createElement("p");
                 const description = document.createElement("p");
                 const dueDate = document.createElement("p");
                 const completed = document.createElement("input");
-                const deleteButton = document.createElement("button");
+                const completedLabel = document.createElement("p");
 
-                item.classList.add("urgent-task");
+                // item.classList.add("urgent-task");
                 name.textContent = task.name;
+                name.classList.add("task-name");
                 description.textContent = task.description;
                 dueDate.textContent = task.dueDate
                 completed.type = "checkbox";
-                deleteButton.textContent = "X";
+                completedLabel.textContent = "Completed?"
+                completed.classList.add("task-complete");
+
+                item.addEventListener("click", (e) => {
+                    if (e.target.classList.contains("task-complete")) {
+                        task.finished = true;
+                        task.urgent = false;
+                        board.removeChild(item);
+                    }
+                    else {
+                        main.innerHTML = "";
+                        viewTasks(project)
+                    }
+                })
 
                 completed.addEventListener("change", () => {
                     task.finished = true;
@@ -29,17 +47,19 @@ function viewUrgent(projects) {
                     board.removeChild(item);
                 })
 
-                deleteButton.addEventListener("click", () => {
-                    let index = project.tasks.indexOf(task);
-                    project.tasks.splice(index, 1);
-                    board.removeChild(item)
-                })
+                // deleteButton.addEventListener("click", () => {
+                //     let index = project.tasks.indexOf(task);
+                //     project.tasks.splice(index, 1);
+                //     board.removeChild(item)
+                // })
 
-                item.appendChild(name);
-                item.appendChild(description);
-                item.appendChild(dueDate);
-                item.appendChild(completed);
-                item.appendChild(deleteButton);
+                leftContainer.appendChild(name);
+                leftContainer.appendChild(description);
+                leftContainer.appendChild(dueDate);
+                rightContainer.appendChild(completedLabel);
+                rightContainer.appendChild(completed)
+                item.appendChild(leftContainer);
+                item.appendChild(rightContainer);
                 board.appendChild(item);
             }
         }

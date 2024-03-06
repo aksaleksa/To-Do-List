@@ -1,4 +1,5 @@
 import "./styles.css"
+import { storeData, retrieveData} from "./storage.js"
 import { Project } from "./classes.js"
 import { viewProjects } from "./viewProjects.js";
 import { viewTasks} from "./viewTasks.js";
@@ -33,6 +34,7 @@ const exampleProject = new Project("Example Project");
 exampleProject.addTask("Add features", "Make the app more functional", "2024-03-04", true);
 exampleProject.addTask("Write tests", "Make sure the app doesn't break", "2024-03-03");
 projects.push(exampleProject);
+// storeData(projects);
 
 
 urgentTasks.addEventListener("click", () => {
@@ -60,14 +62,24 @@ projectClose.addEventListener("click", (e) => {
     e.preventDefault();
 })
 
+// Simple imperfect form validation. To be improved later, plus validation for new
+// tasks.
+
 projectCreate.addEventListener("click", (e) => {
-    let name = projectName.value;
-    projects.push(new Project(name));
-    projectForm.reset();
-    projectPopup.close();
-    main.innerHTML = "";
-    viewProjects(projects);
     e.preventDefault();
+    if (!projectName.value) {
+        projectName.setCustomValidity("Please give your project a name");
+    }
+    else {
+        projectName.setCustomValidity("");
+        let name = projectName.value;
+        projects.push(new Project(name));
+        storeData(projects);
+        projectForm.reset();
+        projectPopup.close();
+        main.innerHTML = "";
+        viewProjects(projects);
+    }    
 })
 
 taskClose.addEventListener("click", (e) => {
@@ -76,6 +88,7 @@ taskClose.addEventListener("click", (e) => {
     e.preventDefault();
 })
 
+
 taskCreate.addEventListener("click", (e) => {
     const project = projects[projectIndex];
     const name = taskName.value;
@@ -83,6 +96,7 @@ taskCreate.addEventListener("click", (e) => {
     const dueDate = taskDue.value;
     const urgent = taskUrgent.checked;
     project.addTask(name, description, dueDate, urgent);
+    storeData(projects);
     taskForm.reset();
     taskPopup.close();
     main.innerHTML = "";
@@ -90,7 +104,18 @@ taskCreate.addEventListener("click", (e) => {
     e.preventDefault();
 })
 
-
 viewProjects(projects);
+
+// window.addEventListener("load", () => {
+//     if (!localStorage.myProjects) {
+//         const exampleProject = new Project("Example Project");
+//         exampleProject.addTask("Add features", "Make the app more functional", "2024-03-04", true);
+//         exampleProject.addTask("Write tests", "Make sure the app doesn't break", "2024-03-03");
+//         projects.push(exampleProject);
+//         storeData(projects);
+//     }
+//     projects = retrieveData();
+//     viewProjects(projects);
+// })
 
 export {projects, projectIndex, taskIndex}

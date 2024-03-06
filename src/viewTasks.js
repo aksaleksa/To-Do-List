@@ -1,5 +1,6 @@
 import { viewProjects } from "./viewProjects";
 import { projects, projectIndex, taskIndex } from "./index.js"
+import { storeData } from "./storage.js";
 
 function viewTasks(project) {
     const main = document.querySelector("#main");
@@ -47,7 +48,10 @@ function viewTasks(project) {
         completed.type = "checkbox";
         completedLabel.textContent = "Completed?";
         completedLabel.classList.add("completed-label");
-        if (task.finished) completed.checked = true;
+        if (task.finished) {
+            completed.checked = true;
+            item.classList.add("completed-task");
+        }
         editButton.textContent = "Edit";
         deleteButton.textContent = "Remove";
         if (task.urgent) item.classList.add("urgent-task");
@@ -72,6 +76,7 @@ function viewTasks(project) {
                 let index = project.tasks.indexOf(task);
                 project.tasks.splice(index, 1);
                 board.removeChild(item);
+                storeData(projects);
             }
         })
 
@@ -112,6 +117,7 @@ function viewTasks(project) {
         editTask.description = editDescription.value;
         editTask.dueDate = editDue.value;
         editTask.urgent = editUrgent.checked;
+        // storeData(projects);
         editPopup.close();
         main.innerHTML = "";
         viewTasks(projects[projectIndex]);
